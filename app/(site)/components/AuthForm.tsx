@@ -26,7 +26,7 @@ const AuthForm = () => {
             console.log("authenticated")
             router.push("/users")
         }
-    }, [session?.status,router])
+    }, [session?.status, router])
 
     const togggleVarianet = useCallback(() => {
         if (variant === 'LOGIN') {
@@ -50,8 +50,8 @@ const AuthForm = () => {
         if (variant === 'REGISTER') {
             try {
                 const registerResponse = await axios.post('/api/register', data);
-                if(registerResponse){
-                    signIn('credentials',data)
+                if (registerResponse) {
+                    signIn('credentials', data)
                 }
 
             } catch (error) {
