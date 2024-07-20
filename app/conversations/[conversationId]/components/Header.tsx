@@ -34,7 +34,7 @@ const Header:React.FC<HeaderProps> = ({conversation}) => {
                 </div>
             </div>
         </div>
-        <HiEllipsisHorizontal  size={32} 
+        <HiEllipsisHorizontal  size={32} onClick={()=>{}} className="text-sky-500 cursor-pointer hover:text-sky-600 transition"
          />  {/* 4:29:56 */}
     </div> );
 }
