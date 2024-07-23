@@ -28,7 +28,7 @@ const Header:React.FC<HeaderProps> = ({conversation}) => {
             <HiChevronLeft size={32}   /></Link>
             <Avatar user={otherUser} />
             <div className="flex flex-col">
-                <div> {conversation.name || otherUser.name}</div>
+                <div className="capitalize"> {conversation.name || otherUser.name}</div>
                 <div className="text-sm font-light text-neutral-500">
                     {statusTexxt}
                 </div>

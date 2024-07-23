@@ -14,9 +14,13 @@ const getMessages  =async (conversationId:string) =>{
             }
         })
 
+        // if(!message){
+        //     return []
+        // }
+
         return message
     } catch (error) {
-        
+        return []
     }
 }
 
