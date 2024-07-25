@@ -9,6 +9,7 @@ import axios from "axios";
 interface BodyProps {
     initialMessages:FullMessageType[]
 }
+
 const Body:React.FC<BodyProps> = ({initialMessages}) => {
     const [messages,setMessages] = useState(initialMessages);
     const bottomRef = useRef<HTMLDivElement>(null);
