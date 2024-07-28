@@ -34,7 +34,7 @@ const Form = () => {
 
     return ( 
         <div className="py-4 px-4 bg-white border-t flex items-center gap-2 lg:gap-4 w-full">
-          <CldUploadButton options={{maxFiles:1}} onUpload={handleUpload} uploadPreset="ucbyj4ta" >  <HiPhoto size={30} className="text-sky-500"/> </CldUploadButton>
+          <CldUploadButton options={{maxFiles:1}} onSuccess={handleUpload} uploadPreset="ucbyj4ta" >  <HiPhoto size={30} className="text-sky-500"/> </CldUploadButton>
             <form onSubmit={handleSubmit(onSubmit)} className="flex items-center gap-2 lg:gap-4 w-full">
                 <MessageInput id ="message" register = {register} errors = {errors} required placeholder ="write a message" />
                 <button type="submit" className="rounded-full p-2 bg-sky-500 hover:bg-sky-600 transition"><HiPaperAirplane size={18 } className="text-white"/></button>
