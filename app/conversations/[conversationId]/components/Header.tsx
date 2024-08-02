@@ -16,6 +16,7 @@ interface HeaderProps {
   };
 }
 const Header: React.FC<HeaderProps> = ({ conversation }) => {
+  // console.log("parsing data Header ==>",conversation)
   const otherUser = useOtherUser(conversation);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const statusTexxt = useMemo(() => {

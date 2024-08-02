@@ -20,6 +20,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
   data,
   selected,
 }) => {
+  console.log("parsing data ConversationBox ==>",data)
   const otherUser = useOtherUser(data);
   const session = useSession();
   const router = useRouter();

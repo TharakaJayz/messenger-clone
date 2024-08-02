@@ -10,6 +10,7 @@ import ConversationBox from "../ConversationBox";
 import GroupChatModel from "./GroupChatModel";
 import { useSession } from "next-auth/react";
 import { pusherClient } from "@/app/libs/pusher";
+import { find } from "lodash";
 
 interface ConversationListProps {
   intialItems: FullConversationType[];
@@ -35,13 +36,32 @@ const ConversationList: React.FC<ConversationListProps> = ({
     }
 
     pusherClient.subscribe(pusherKey);
-    const newHandler = () => {};
+    const newHandler = (conversation: FullConversationType) => {
+      setItems((current) => {
+        if (find(current, { id: conversation.id })) {
+          return current;
+        }
+
+        return [conversation, ...current];
+      });
+    };
+
+    const updateHandler = (conversation:FullConversationType)=>{
+        setItems((current)=> current.map((currentConversation)=>{
+            if(currentConversation.id === conversation.id){
+                return {...currentConversation, messages:conversation.messages}
+            }
+            return conversation
+        }))
+    }
 
     pusherClient.bind("conversation:new", newHandler);
+    pusherClient.bind("conversation:update",updateHandler)
 
     return () => {
       pusherClient.unsubscribe(pusherKey);
       pusherClient.unbind("conversation:new", newHandler);
+      pusherClient.unbind("conversation:update",updateHandler)
     };
   }, [pusherKey]);
 
