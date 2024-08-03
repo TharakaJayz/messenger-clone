@@ -33,7 +33,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
       },
     });
 
-    if (!conversation) {
+    if (!conversation ) {
       return new NextResponse("Invalid ID", { status: 400 });
     }
 
@@ -73,6 +73,8 @@ export async function POST(request: Request, { params }: { params: IParams }) {
       return NextResponse.json(conversation);
     }
     await pusherServer.trigger(conversationId!,"message:update",updatedMessage)
+
+    console.log("updatedMessage ===>>>",updatedMessage)
 
     return NextResponse.json(updatedMessage);
   } catch (error) {

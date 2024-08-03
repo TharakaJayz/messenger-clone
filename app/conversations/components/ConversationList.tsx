@@ -21,6 +21,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
   users,
 }) => {
   const session = useSession();
+  console.log("intialItems==>>",intialItems)
   const [items, setItems] = useState(intialItems);
   const [isModelOpen, setIsModelOpen] = useState(false);
   const router = useRouter();
@@ -51,7 +52,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
             if(currentConversation.id === conversation.id){
                 return {...currentConversation, messages:conversation.messages}
             }
-            return conversation
+            return currentConversation
         }))
     }
 
